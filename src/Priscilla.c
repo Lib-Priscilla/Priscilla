@@ -1,4 +1,4 @@
-#include "Window.h"
+#include "Priscilla.h"
 #include <stdio.h>
 
 // INITIALIZATION FUNCTION
@@ -39,4 +39,9 @@ void quit(Window *window) {
         SDL_DestroyWindow(window->sdl_window);
     }
     SDL_Quit();
+}
+
+// BUTTON
+void create_button(char text,int width, int height,int x,int y){
+	
 }
