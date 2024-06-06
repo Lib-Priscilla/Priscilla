@@ -1,6 +1,17 @@
-# Priscilla To-Do List
+# Priscilla 
+the code base is splited across several files: 
+```src/
+      window.c window.h
+      button.c button.h
+      label.c label.h
+      textbox.c textbox.h
+      others will be added later (entry, containers, grid, ...)
+```
+each file contains it's own implementation like for example the window.c handles the ```c window_init()``` and the ```quit()```, while the button.c handles code for button.
+all implementation should small letters all through like ```window_init()``` instead of ```Window_Init()``` or ```WINDOW_INIT()``` as users can code faster that way
 
-This file contains a list of tasks that need to be implemented for the GUI library project.
+# To-Do List
+Below is a list of tasks that need to be implemented for the GUI library.
 
 ## Core Features
 - [x] Basic window implemetation 
