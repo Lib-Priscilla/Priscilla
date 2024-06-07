@@ -31,17 +31,42 @@ int window_init(Window *window, const char *title, int width, int height) {
 }
 
 // QUIT FUNCTION
-void quit(Window *window) {
+void quit(Window *window, Button *buttons, int buttonCount) {
+    for (int i = 0; i < buttonCount; ++i) {
+        free(buttons[i].text);
+    }
     if (window->sdl_renderer) {
         SDL_DestroyRenderer(window->sdl_renderer);
     }
     if (window->sdl_window) {
         SDL_DestroyWindow(window->sdl_window);
     }
+    TTF_Quit();
     SDL_Quit();
 }
 
+
 // BUTTON
-void create_button(char text,int width, int height,int x,int y){
-	
+void create_button(Button *button, const char *text,TTF_Font *font, int fontSize ){
+	button->text=strdup(text);
+	button->font=font;
+	button->fontSize=fontSize;
+}
+void draw_button(Window *window, Button *button, int width, int height, int x, int y, SDL_Color buttonColor, SDL_Color textColor) {
+    button->rect = (SDL_Rect){x, y, width, height};
+    button->buttonColor = buttonColor;
+    button->textColor = textColor;
+
+    // Set button color and render button rectangle
+    SDL_SetRenderDrawColor(window->sdl_renderer, buttonColor.r, buttonColor.g, buttonColor.b, buttonColor.a);
+    SDL_RenderFillRect(window->sdl_renderer, &button->rect);
+
+    // Render button text
+    SDL_Surface *textSurface = TTF_RenderText_Solid(button->font, button->text, textColor);
+    SDL_Texture *textTexture = SDL_CreateTextureFromSurface(window->sdl_renderer, textSurface);
+    SDL_Rect textRect = {x + (width - textSurface->w) / 2, y + (height - textSurface->h) / 2, textSurface->w, textSurface->h};
+    SDL_RenderCopy(window->sdl_renderer, textTexture, NULL, &textRect);
+
+    SDL_FreeSurface(textSurface);
+    SDL_DestroyTexture(textTexture);
 }

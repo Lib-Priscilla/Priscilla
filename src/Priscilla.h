@@ -1,8 +1,10 @@
 #ifndef  PRISCILLA_H
 #define PRISCILLA_H
-
+// LIBRARIES USED
 #include<SDL2/SDL.h>
-#include<SDL2/SDL_ttf>
+// #include<SDL2/SDL_ttf>
+
+
 typedef struct{
 	SDL_Window *sdl_window;
 	SDL_Renderer*sdl_renderer;
@@ -12,12 +14,12 @@ typedef struct{
 }window;
 
 typedef struct {
-    SDL_Rect rect;          // Position and size of the button
-    SDL_Color color;        // Color of the button
-    SDL_Texture *texture;   // Texture of the button (optional, for text or image)
-    char *text;             // Text displayed on the button
-    SDL_Renderer *renderer; // Renderer for rendering the button
-    void (*onClick)(void);  // Callback function for button click event
+    char *text;
+    TTF_Font *font;
+    int fontSize;
+    SDL_Rect rect;
+    SDL_Color buttonColor;
+    SDL_Color textColor;
 } Button;
 
 // WINDOW MANAGEMENT(INIT AND QUIT)
@@ -26,8 +28,7 @@ void quit(Window *window); //quit at the end of every program
 
 
 // BUTTON
-void create_button(char text,int width, int height,int x,int y){
-	
-}
+void create_button(char text,int width, int height,int x,int y);
+void draw_button(Window *window, Button *button, int width, int height,int x,int y,SDL_Color buttonColor, SDL_Color textColor);
 
 #endif // PRISCILLA_H
