@@ -1,6 +1,6 @@
 # Priscilla 
-the code base uses just the ```Priscilla.c``` and ```Priscilla.h``` file 
-all implementations should be small letters all through like ```window_init()``` instead of ```Window_Init()``` or ```WINDOW_INIT()``` as users can code faster that way.
+the code base uses just the ```Priscilla.c``` and ```Priscilla.h``` file. 
+All implementations should be small letters all through like ```window_init()``` instead of ```Window_Init()``` or ```WINDOW_INIT()``` as users can code faster that way.
 
 # To-Do List
 Below is a list of tasks that need to be implemented for the GUI library.
