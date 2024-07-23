@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Compile main.c with SDL2, SDL2_image, and SDL2_ttf
+gcc -o main main.c -lSDL2 -lSDL2_image -lSDL2_ttf
+
+# Check if the compilation was successful
+if [ $? -eq 0 ]; then
+    echo "Compilation successful. You can run the program with ./main"
+else
+    echo "Compilation failed. Please check your code for errors."
+fi

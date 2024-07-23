@@ -16,6 +16,11 @@ void terminate_window(){
 void window_background(Color color){
 	clear_screen(color);
 }
+void main_loop(){
+		while(active){
+		handle_events();
+	}
+}
 void button (Color color,int w,int h,int x,int y){
 	draw_rectangle(color,w,h,x,y,FILLED);
 }
