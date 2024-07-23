@@ -15,3 +15,21 @@ return 0;
 }
 ```
 check out the example directory for more example programs on our to use Priscilla.
+
+# To do list
+Below contains a list of tasks that need to be implemented for the project.
+
+### Core Features
+- [x] Init and Quit
+- [ ] Events handling/states
+- [ ] Buttons
+- [ ] Labels
+- [ ] Textboxes
+- [ ] checkboxes
+
+### Advanced Features
+- [ ] Container
+- [ ] Language bindings
+- [ ] Documentations
+- [ ] API improvements
+- [ ] Plugin support
