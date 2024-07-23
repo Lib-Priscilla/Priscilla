@@ -277,3 +277,32 @@ int write_text(const char *text, Color color) {
 
     return 0;
 }
+// draw text is different from write text, in draw text you get extral control over x,y,w,h
+int draw_text(const char *text,int x, int y, int w, int h, Color color) {
+    SDL_Color sdl_color = {color.r, color.g, color.b, color.a};
+    
+    // Render text to surface
+    SDL_Surface *textSurface = TTF_RenderText_Solid(font, text, sdl_color);
+    if (!textSurface) {
+        printf("Unable to render text surface! TTF_Error: %s\n", TTF_GetError());
+        return -1;
+    }
+
+    // Create a Texture from the Surface
+    SDL_Texture *textTexture = SDL_CreateTextureFromSurface(ren, textSurface);
+    if (!textTexture) {
+        printf("Unable to create texture from rendered text! SDL_Error: %s\n", SDL_GetError());
+        SDL_FreeSurface(textSurface);
+        return -1;
+    }
+
+    // Render the text
+    SDL_Rect dst = { x, y, w, h };
+    SDL_RenderCopy(ren, textTexture, NULL, &dst);
+
+    // Clean up the surface and texture
+    SDL_FreeSurface(textSurface);
+    SDL_DestroyTexture(textTexture);
+
+    return 0;
+}
