@@ -5,14 +5,17 @@
 #include<SDL2/SDL_image.h>
 #include"priscilla.h"
 
-int main (){
-	  
-    create_window("GUI",720,360);
-	window_background(WHITE);
-	button(GRAY,50,50,40,50);
-        // Present the rendered frame
-       present();
-       main_loop();
-	terminate_window();
+int main( ) {
+    create_window("Window Title", 800, 600)
+
+	Button myButton = create_button("Click Me", 200, 50, buttonColor);
+    place_button(&myButton, 100, 100);
+    align_button(&myButton, CENTERED);
+
+    // Main loop
+    main_loop();
+    terminate_window();
+    return 0;
+}
 	return 0;
 }
